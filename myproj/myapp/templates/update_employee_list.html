@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Update Employee</h2>
+  <form method="post" class="form">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="employee">Select Employee:</label>
+      <select class="form-control" name="employee" required>
+        {% for employee in employees %}
+          <option value="{{ employee.id }}">{{ employee.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Update Employee</button>
+  </form>
+</div>
+{% endblock %}

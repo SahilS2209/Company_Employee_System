@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}View Companies{% endblock %}
+
+{% block content %}
+<h1>Company List</h1>
+<ul class="list-group">
+    {% for company in companies %}
+    <li class="list-group-item">{{ company.name }} - {{ company.location }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

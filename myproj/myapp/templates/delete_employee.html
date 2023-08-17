@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Employee{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Delete Employee</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="employee">Select Employee:</label>
+            {{ employee_form.employee.label_tag }}
+            {{ employee_form.employee }}
+        </div>
+        <button type="submit" class="btn btn-danger">Delete Employee</button>
+        <a href="{% url 'get_emp' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

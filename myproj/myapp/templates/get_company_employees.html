@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Get Employees by Company</h2>
+  <form method="get">
+    <div class="form-group">
+      <label for="company">Select Company:</label>
+      <select class="form-control" name="company" required>
+        <option value="">Select a company</option>
+        {% for company in companies %}
+          <option value="{{ company.id }}" {% if company == selected_company %}selected{% endif %}>{{ company.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Get Employees</button>
+  </form>
+  
+  {% if selected_company %}
+    <h3 class="mt-5">Employees of {{ selected_company.name }}</h3>
+    <ul>
+      {% for employee in employees %}
+        <li>{{ employee.name }} - {{ employee.email }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+{% endblock %}

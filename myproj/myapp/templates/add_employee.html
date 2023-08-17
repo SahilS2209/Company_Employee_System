@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Employee{% endblock %}
+
+{% block content %}
+
+    <h2>Add Employee</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ employee_form.name.id_for_label }}">Name:</label>
+            {{ employee_form.name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ employee_form.email.id_for_label }}">Email:</label>
+            {{ employee_form.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ employee_form.company_name.id_for_label }}">Company:</label>
+            {{ employee_form.company_name }}
+        </div>
+        <button type="submit" class="btn btn-primary">Add Employee</button>
+        <a href="{% url 'get_emp' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}
